@@ -17,6 +17,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import domen.Porudzbenica;
 import domen.StavkaPorudzbenice;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
@@ -37,14 +38,17 @@ public class Pdf {
     private static Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 12,
             Font.BOLD);
     
-    public void createPdfDocument(Porudzbenica p) throws FileNotFoundException, DocumentException{
+    public File createPdfDocument(Porudzbenica p) throws FileNotFoundException, DocumentException{
         Document doc = new Document(); 
-        PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("Porudžbenica"+p.getSifraPorudzbenice() + ".pdf"));
+        String filename = "Porudžbenica"+p.getSifraPorudzbenice() + ".pdf";
+        PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream(filename));
 
         doc.open();
         this.metadata(doc, p);
         this.sadrzaj(doc, p);
         doc.close();
+        
+        return new File(filename);
         
     }
     

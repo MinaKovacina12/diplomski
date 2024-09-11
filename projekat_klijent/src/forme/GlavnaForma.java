@@ -434,11 +434,9 @@ public class GlavnaForma extends javax.swing.JFrame {
             Pdf pdf = new Pdf();
             //pdf.createPdfDocument(porudzbenica);
             try {
-                pdf.createPdfDocument(porudzbenica);
+                File file = pdf.createPdfDocument(porudzbenica);
                 JOptionPane.showMessageDialog(this, "Dokument je uspešno generisan");
-                String filename = "Porudzbenica" + porudzbenica.getSifraPorudzbenice() + ".pdf";
-
-                File file = new File(filename);
+               // String filename = "Porudzbenica" + porudzbenica.getSifraPorudzbenice() + ".pdf";
 
                 Sender.getInstanca().posaljiEmail(porudzbenica, file);
             } catch (Exception ex) {
