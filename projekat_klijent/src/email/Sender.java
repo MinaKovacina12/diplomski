@@ -84,7 +84,8 @@ public class Sender {
 
     private String generisiHtmlPoruku(Porudzbenica p) {
         Dobavljac d = p.getDobavljac();
-        return "Postovani " + d.toString() + " <br/> U prilogu Vam saljemo porudzbenicu sa rednim brojem " + p.getSifraPorudzbenice() + " ciji je status konacan. <hr/> Pozdrav, <br/> Vasa Palada";
+        return "Postovani " + d.toString() + " <br/> U prilogu Vam saljemo porudzbenicu sa rednim brojem " 
+                + p.getSifraPorudzbenice() + " ciji je status konacan. <hr/> Pozdrav, <br/> Vasa Palada";
     }
 
 }

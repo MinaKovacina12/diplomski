@@ -39,7 +39,7 @@ public class Pdf {
     
     public void createPdfDocument(Porudzbenica p) throws FileNotFoundException, DocumentException{
         Document doc = new Document(); 
-        PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("Porudzbenica"+p.getSifraPorudzbenice() + ".pdf"));
+        PdfWriter pdf = PdfWriter.getInstance(doc, new FileOutputStream("Porudžbenica"+p.getSifraPorudzbenice() + ".pdf"));
 
         doc.open();
         this.metadata(doc, p);
@@ -50,8 +50,8 @@ public class Pdf {
     
     
     public void metadata(Document document, Porudzbenica p){
-        document.addTitle("Porudzbenica-" +p.getSifraPorudzbenice());
-        document.addSubject("Porudzbenica-" +p.getSifraPorudzbenice());
+        document.addTitle("Porudžbenica-" +p.getSifraPorudzbenice());
+        document.addSubject("Porudžbenica-" +p.getSifraPorudzbenice());
         document.addAuthor(p.getMenadzer().toString());
         document.addCreator("admin@gmail.com");
     }
@@ -61,7 +61,7 @@ public class Pdf {
 
         praznaLinija(preface, 1);
 
-        preface.add(new Paragraph("Porudzbenica-" +p.getSifraPorudzbenice(), catFont));
+        preface.add(new Paragraph("Porudžbenica-" +p.getSifraPorudzbenice(), catFont));
 
         praznaLinija(preface, 1);
         
@@ -72,18 +72,18 @@ public class Pdf {
         
         praznaLinija(preface, 1);
         
-        preface.add(new Paragraph("Iznos porudzbenice: " + p.sracunajUkupno() ,smallBold));
+        preface.add(new Paragraph("Iznos porudžbenice: " + p.sracunajUkupno() ,smallBold));
         
         praznaLinija(preface, 1);
         SimpleDateFormat sdf=new SimpleDateFormat("dd.MM.yyyy.");
         
-        preface.add(new Paragraph("Vreme dogadjaja", smallBold));
+        preface.add(new Paragraph("Vreme događaja", smallBold));
         praznaLinija(preface, 1);
         preface.add(new Paragraph(sdf.format(p.getDatum()), redFont));
         
         document.add(preface);
         
-        Paragraph paragraf = new Paragraph("Stavke porudzbenice", catFont);;
+        Paragraph paragraf = new Paragraph("Stavke porudžbenice", catFont);;
         
         praznaLinija(paragraf, 3);
         
@@ -100,7 +100,7 @@ public class Pdf {
         c1.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(c1);
         
-        PdfPCell c2 = new PdfPCell(new Phrase("Kolicina"));
+        PdfPCell c2 = new PdfPCell(new Phrase("Količina"));
         c2.setHorizontalAlignment(Element.ALIGN_CENTER);
         table.addCell(c2);
         
