@@ -10,6 +10,7 @@ import domen.Dobavljac;
 import domen.Menadzer;
 import domen.Porudzbenica;
 import domen.Proizvod;
+import domen.StavkaPorudzbenice;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -152,7 +153,12 @@ public class KlijentNit extends Thread {
                 case Operacije.OBRISI_PROIZVOD:
                     ServerController.getInstanca().obrisiProizvod((Proizvod) klijentskiZahtev.getPodatak());
                     break;
-             
+
+               case Operacije.UCITAJ_STAVKE:
+                  
+                    List<StavkaPorudzbenice> spor11 = ServerController.getInstanca().vratiSveStavke();
+                    serverskiOdgovor.setPodatak(spor11);
+                    break;
 
             }
         } catch (Exception ex) {

@@ -5,8 +5,10 @@
 package ui;
 
 import controller.ServerController;
+import domen.Cenovnik;
 import domen.Dobavljac;
 import domen.Porudzbenica;
+import domen.StavkaPorudzbenice;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import nit.ServerNit;
 
@@ -22,9 +25,8 @@ import nit.ServerNit;
  * @author Joksa
  */
 public class MainFrm extends javax.swing.JFrame {
-
+    
     private ServerNit serverNit;
-   
 
     /**
      * Creates new form MainFrm
@@ -34,7 +36,7 @@ public class MainFrm extends javax.swing.JFrame {
         pokreniBtn.setEnabled(true);
         zautaviBtn.setEnabled(false);
         setLocationRelativeTo(null);
-
+        
     }
 
     /**
@@ -53,6 +55,11 @@ public class MainFrm extends javax.swing.JFrame {
         jSeparator3 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblServer = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblProizvodiZaPorudz = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblOpet = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -97,6 +104,39 @@ public class MainFrm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblServer);
 
+        tblProizvodiZaPorudz.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblProizvodiZaPorudz);
+
+        jButton1.setText("UCITAJ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        tblOpet.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(tblOpet);
+
         jMenu1.setText("Konfiguracija");
 
         jMenuItem1.setText("Izmeni konfiguraciju");
@@ -124,23 +164,33 @@ public class MainFrm extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(pokreniBtn)
                                 .addGap(35, 35, 35)
-                                .addComponent(zautaviBtn))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(statusLabel))
+                                .addComponent(zautaviBtn)
+                                .addGap(74, 74, 74)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(statusLabel))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(102, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(25, 25, 25)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(statusLabel))
@@ -148,9 +198,13 @@ public class MainFrm extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(zautaviBtn)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(zautaviBtn)
+                        .addComponent(jButton1))
                     .addComponent(pokreniBtn))
-                .addGap(25, 25, 25))
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -168,22 +222,34 @@ public class MainFrm extends javax.swing.JFrame {
                 statusLabel.setText("Online");
                 statusLabel.setForeground(Color.GREEN);
                 
-                
-               List<Dobavljac> dobavljaci=new ArrayList<>();
-                dobavljaci=ServerController.getInstanca().ucitajListuDobavljaca();
-                List<Porudzbenica> porudzbenice=ServerController.getInstanca().vratiSvePorudzbenice();
-                ModelTabeleServer mtss=new ModelTabeleServer(dobavljaci, porudzbenice);
+                List<Dobavljac> dobavljaci = new ArrayList<>();
+                dobavljaci = ServerController.getInstanca().ucitajListuDobavljaca();
+                List<Porudzbenica> porudzbenice = ServerController.getInstanca().vratiSvePorudzbenice();
+                ModelTabeleServer mtss = new ModelTabeleServer(dobavljaci, porudzbenice);
                 tblServer.setModel(mtss);
                 
+                TableModeOpet t=new TableModeOpet(dobavljaci);
+                 tblOpet.setModel(t);
+            
             } catch (IOException ex) {
                 Logger.getLogger(MainFrm.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 Logger.getLogger(MainFrm.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+            
         }
 
     }//GEN-LAST:event_pokreniBtnActionPerformed
+
+    /* public void osveziTabelu() {
+        try {
+            List<StavkaPorudzbenice> stavke = ServerController.getInstanca().vratiSveStavke();
+            ModelTabeleProiPorudz model = new ModelTabeleProiPorudz(stavke);
+            tblProizvodiZaPorudz.setModel(model); // tabela je vaš JTable
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }*/
 
     private void zautaviBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zautaviBtnActionPerformed
         // TODO add your handling code here:
@@ -194,9 +260,7 @@ public class MainFrm extends javax.swing.JFrame {
                 zautaviBtn.setEnabled(!zautaviBtn.isEnabled());
                 statusLabel.setText("Offline");
                 statusLabel.setForeground(Color.red);
-
                 
-
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
@@ -216,16 +280,34 @@ public class MainFrm extends javax.swing.JFrame {
         new IzmeniKonfiguracijuForma(this, rootPaneCheckingEnabled).setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            
+            List<StavkaPorudzbenice> stavke = ServerController.getInstanca().vratiSveStavke();
+            ModelTabeleProiPorudz mpp = new ModelTabeleProiPorudz(stavke);
+            tblProizvodiZaPorudz.setModel(mpp);
+            mpp.osveziModel(stavke);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JButton pokreniBtn;
     private javax.swing.JLabel statusLabel;
+    private javax.swing.JTable tblOpet;
+    private javax.swing.JTable tblProizvodiZaPorudz;
     private javax.swing.JTable tblServer;
     private javax.swing.JButton zautaviBtn;
     // End of variables declaration//GEN-END:variables
