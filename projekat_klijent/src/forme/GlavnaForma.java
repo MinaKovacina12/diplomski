@@ -463,8 +463,13 @@ public class GlavnaForma extends javax.swing.JFrame {
             } else {
 
                 for (Porudzbenica porudzbenica : porudzbenice) {
+                  
                     if (porudzbenica.getDobavljac().getNazivDobavljaca().toLowerCase().contains(pretraga.toLowerCase())) {
-                        pretrazenePorudzbenice.add(porudzbenica);
+                        
+                          if(porudzbenice==null){
+                        JOptionPane.showMessageDialog(rootPane, "Nije pronađena porudžbenica prema zadatom kriterijumu");
+                    }
+                          pretrazenePorudzbenice.add(porudzbenica);
                     }
                 }
                 mtp.setPorudzbenica(pretrazenePorudzbenice);
