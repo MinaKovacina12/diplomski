@@ -30,6 +30,6 @@ public interface Operacije {
     public static final int ZAPAMTI_PROIZVOD = 17;
     public static final int OBRISI_PROIZVOD = 18;
     public static final int POKUSAJ = 19;
-
+    public static final int UCITAJ_STAVKE = 20;
 
 }
