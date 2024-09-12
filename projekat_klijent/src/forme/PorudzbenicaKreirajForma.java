@@ -299,7 +299,7 @@ public class PorudzbenicaKreirajForma extends javax.swing.JDialog {
 
             int kolicina = Integer.parseInt(txtKolicina.getText() + "");
             if (txtKolicina.getText().isEmpty()) {
-                throw new Exception("Niste uneli količinu");
+                throw new Exception("Sistem ne može da zapamti porudžbenicu");
             }
 
             int red = tblCenovnik.getSelectedRow();
@@ -380,6 +380,7 @@ public class PorudzbenicaKreirajForma extends javax.swing.JDialog {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(rootPane, "Sistem ne može da sačuva porudžbenicu");
         }
+
     }//GEN-LAST:event_brnSacuvajActionPerformed
 
     private void btnObrisiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObrisiActionPerformed

@@ -9,6 +9,7 @@ import domen.Dobavljac;
 import domen.Menadzer;
 import domen.Porudzbenica;
 import domen.Proizvod;
+import domen.StavkaPorudzbenice;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -124,7 +125,9 @@ public class ClientController {
         posaljiZahtevServeru(Operacije.OBRISI_PROIZVOD, proizvod);
     }
 
-  
+    public List<StavkaPorudzbenice> vratiSveStavke() throws Exception {
+        return (List<StavkaPorudzbenice>) posaljiZahtevServeru(Operacije.UCITAJ_STAVKE, null);
+    }
 
     private Object posaljiZahtevServeru(int operacija, Object podatak) throws Exception {
         KlijentskiZahtev klijentskiZahtev = new KlijentskiZahtev(podatak, operacija);
