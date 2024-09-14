@@ -153,6 +153,11 @@ public class KlijentNit extends Thread {
                 case Operacije.OBRISI_PROIZVOD:
                     ServerController.getInstanca().obrisiProizvod((Proizvod) klijentskiZahtev.getPodatak());
                     break;
+                    
+                case Operacije.OBRADI_PORUDZBENICU:
+                     Porudzbenica por5 = ServerController.getInstanca().obradi((Porudzbenica)klijentskiZahtev.getPodatak());
+                    serverskiOdgovor.setPodatak(por5);
+                    break;
 
 
             }

@@ -26,6 +26,7 @@ import so.porudzbenica.UcitajPorudzbenicuOperacija;
 //import so.porudzbenica.VratiSvePorudzbenice;
 import so.porudzbenica.UcitajListuPorudzbenica;
 import so.porudzbenica.KreirajPorudzbenicuOperacija;
+import so.porudzbenica.ObradiPorudzbenicuOperacija;
 import so.porudzbenica.UcitajPorudzbenicuOperacija;
 import so.porudzbenica.ZapamtiPorudzbenicuOperacija;
 import so.proizvod.KreirajProizvodOperacija;
@@ -169,6 +170,12 @@ public class ServerController {
     public void obrisiProizvod(Proizvod proizvod) throws Exception {
         ObrisiProizvodOperacija obrisiProizvodOperacija = new ObrisiProizvodOperacija();
         obrisiProizvodOperacija.izvrsiOperaciju(proizvod);
+    }
+
+    public Porudzbenica obradi(Porudzbenica porudzbenica) throws Exception {
+        ObradiPorudzbenicuOperacija obradiPorudzbenicuOperacija = new ObradiPorudzbenicuOperacija();
+
+        return (Porudzbenica) obradiPorudzbenicuOperacija.izvrsiOperaciju(porudzbenica);
     }
 
   
