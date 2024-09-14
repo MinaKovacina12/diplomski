@@ -368,6 +368,15 @@ public class PorudzbenicaKreirajForma extends javax.swing.JDialog {
                 ClientController.getInstanca().kreirajPorudzbenicu(porudzbenica);
                 JOptionPane.showMessageDialog(rootPane, "Uspešno ste kreirali porudžbenicu");
             } else {
+                ModelTabeleStavke mts=(ModelTabeleStavke) tblStavke.getModel();
+                List<StavkaPorudzbenice> lista=mts.getStavke();
+                
+                if(lista.isEmpty()){
+                    JOptionPane.showMessageDialog(rootPane, "Sistem ne moze da sacuva porudzbenicu");
+                    return;
+                }
+                
+                porudzbenica.setStavke(lista);
                 for (StavkaPorudzbenice stavka : porudzbenica.getStavke()) {
                     stavka.setPorudzbenica(porudzbenica);
                 }

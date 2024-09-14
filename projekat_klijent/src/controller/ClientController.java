@@ -143,4 +143,8 @@ public class ClientController {
 
     }
 
+    public Object obradi(Porudzbenica porudzbenica) throws Exception {
+        return posaljiZahtevServeru(Operacije.OBRADI_PORUDZBENICU, porudzbenica);
+    }
+
 }

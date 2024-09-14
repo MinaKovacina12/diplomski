@@ -5,28 +5,13 @@
 package forme;
 
 import controller.ClientController;
-import domen.Cenovnik;
-import domen.Dobavljac;
 import domen.Porudzbenica;
-import domen.Proizvod;
-import domen.StavkaPorudzbenice;
-import email.Sender;
-import java.awt.Desktop;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import modeli.ModelTabeleCenovnik;
-import modeli.ModelTabeleDobavljaci;
 import modeli.ModelTabelePorudzbenica;
 import modeli.ModelTabeleStavkaPorudzbenice;
-import modeli.ModelTabeleStavke;
-import pdf.Pdf;
+
 
 /**
  *
@@ -423,26 +408,26 @@ public class GlavnaForma extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Porudžbenica je konačna, ne može se ponovo obraditi");
                 return;
             }
+            
+            
 
             JOptionPane.showMessageDialog(rootPane, "Sistem je učitao porudžbenicu");
 
             Porudzbenica porudzbenica = ClientController.getInstanca().ucitajPorudzbenicu(por);
 
             porudzbenica.setStatus(Porudzbenica.KONACNA);
-            ClientController.getInstanca().zapamtiPorudzbenicu(porudzbenica);
-
-            Pdf pdf = new Pdf();
-            //pdf.createPdfDocument(porudzbenica);
+            
             try {
-                File file = pdf.createPdfDocument(porudzbenica);
-                JOptionPane.showMessageDialog(this, "Dokument je uspešno generisan");
-               // String filename = "Porudzbenica" + porudzbenica.getSifraPorudzbenice() + ".pdf";
-
-                Sender.getInstanca().posaljiEmail(porudzbenica, file);
-            } catch (Exception ex) {
-                Logger.getLogger(GlavnaForma.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Došlo je do greške!");
+                ClientController.getInstanca().obradi(porudzbenica);
+                JOptionPane.showMessageDialog(rootPane, "Dokument je uspesno generisan. Email je poslat!");
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(rootPane, exception.getMessage());
             }
+            
+            
+            //ClientController.getInstanca().zapamtiPorudzbenicu(porudzbenica);
+
+           
 
         } catch (Exception ex) {
             ex.printStackTrace();
