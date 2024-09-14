@@ -154,11 +154,6 @@ public class KlijentNit extends Thread {
                     ServerController.getInstanca().obrisiProizvod((Proizvod) klijentskiZahtev.getPodatak());
                     break;
 
-               case Operacije.UCITAJ_STAVKE:
-                  
-                    List<StavkaPorudzbenice> spor11 = ServerController.getInstanca().vratiSveStavke();
-                    serverskiOdgovor.setPodatak(spor11);
-                    break;
 
             }
         } catch (Exception ex) {

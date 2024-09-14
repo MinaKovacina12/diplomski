@@ -171,16 +171,5 @@ public class ServerController {
         obrisiProizvodOperacija.izvrsiOperaciju(proizvod);
     }
 
-    public List<StavkaPorudzbenice> vratiSveStavke() throws Exception {
-        List<Porudzbenica> porudzbenice = ServerController.getInstanca().vratiSvePorudzbenice();
-        List<StavkaPorudzbenice> sveStavke = new ArrayList<>();
-        
-
-        for (Porudzbenica p : porudzbenice) {
-            Porudzbenica nova=ucitajPorudzbenicu(p);
-            sveStavke.addAll(nova.getStavke());
-        }
-
-        return sveStavke;
-    }
+  
 }

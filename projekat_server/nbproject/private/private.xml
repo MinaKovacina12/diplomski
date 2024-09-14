@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/controller/ServerController.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/so/ApstraktnaOperacija.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/so/porudzbenica/KreirajPorudzbenicuOperacija.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/ui/MainFrm.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/ui/ModelTabeleProiPorudz.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/ui/TableModeOpet.java</file>
+            <file>file:/C:/Users/Mina/Documents/GitHub/diplomski/projekat_server/src/nit/KlijentNit.java</file>
+        </group>
+    </open-files>
 </project-private>

@@ -33,7 +33,7 @@ public class KreirajPorudzbenicuOperacija extends ApstraktnaOperacija {
             stavkaPorudzbenice.setPorudzbenica(porudzbenica);
             DatabaseBroker.getInstanca().insert(stavkaPorudzbenice);
         }
-
+        //
         return porudzbenica;
     }
 

@@ -18,6 +18,8 @@ public class KreirajProizvodOperacija extends ApstraktnaOperacija{
     protected void validiraj(Object podatak) throws Exception {
         if (!(podatak instanceof Proizvod)) {
             throw new Exception("Prosledjeni objekat nije tipa Proizvod");
+            
+            //vrednosna ogr
         }
     }
 
