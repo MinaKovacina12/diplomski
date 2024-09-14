@@ -35,7 +35,8 @@ public class Porudzbenica implements DomenskiObjekat {
     public Porudzbenica() {
     }
 
-    public Porudzbenica(int sifraPorudzbenice, Date datum, int ukupnoProizvoda, Dobavljac dobavljac, Menadzer menadzer, List<StavkaPorudzbenice> stavke, String status) {
+    public Porudzbenica(int sifraPorudzbenice, Date datum, int ukupnoProizvoda, Dobavljac dobavljac,
+                        Menadzer menadzer, List<StavkaPorudzbenice> stavke, String status) {
         this.sifraPorudzbenice = sifraPorudzbenice;
         this.datum = datum;
         this.ukupnoProizvoda = ukupnoProizvoda;
